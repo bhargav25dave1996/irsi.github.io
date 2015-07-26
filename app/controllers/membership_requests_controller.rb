@@ -2,6 +2,7 @@ class MembershipRequestsController < ApplicationController
 
 	def create
 		MembershipRequest.create(membership_params)
+		redirect_to '/'
 	end
 
 	private
