@@ -36,6 +36,7 @@ ActiveAdmin.register MembershipRequest do
     	f.input :business_email
     	f.input :occupation
     	f.input :institution
+      f.input :role
       f.input :approved
     end
     f.actions
