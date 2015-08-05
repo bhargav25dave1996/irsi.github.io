@@ -1,8 +1,12 @@
-class MembershipRequestsController < ApplicationController
+class MembersController < ApplicationController
 
 	def create
 		MembershipRequest.create(membership_params)
 		redirect_to '/'
+	end
+
+	def show
+		@members = MembershipRequest.where(approved: true)
 	end
 
 	private

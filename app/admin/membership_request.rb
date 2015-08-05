@@ -3,7 +3,7 @@ ActiveAdmin.register MembershipRequest do
         :address, :city, :state, :country,
         :zipcode, :home_phone, :email, :business_phone,
         :business_email, :occupation, :institution,
-        :created_at, :updated_at, :approved
+        :created_at, :updated_at, :approved, :role_id
 
   index do
     selectable_column

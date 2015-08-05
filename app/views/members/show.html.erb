@@ -193,31 +193,105 @@ of Late Prof. Karen Spärck Jones.</font></li>
 
 
 
+
+
 <div class="right">
 
-	<h2>Contact us</h2>
-	<br><br>
-	       <!--img src="images/fire.jpg" width="171" height="137" alt="Pic 1" class="left" /-->
-	<table border="0" cellpadding="1" cellspacing="1">
-	 <tbody><tr>
-	<center>
-	Prasenjit Majumder<br>
-	DAIICT, Gandhinagar<br>
-	Near Indroda Circle<br>
-	Pin-382007<br>
-	<br>
-	Mandar Mitra<br>
-	<!--Information Retrieval Lab, CVPR Unit, <br-->
-	Indian Statistical Institute, <br>
-	Kolkata; Pincode: 700108, <br>
-	<br>
-	Telephone: +91-33-25752858, clia@isical.ac.in <br>
-	Web: www.isical.ac.in/~fire/ <br></center>
-	</tr>
-	</tbody></table>
+	<h2>Advisory Members</h2>
+	<div>
+	<ul>
+	<% for member in MembershipRequest.advisors %>
+		<% unless member.profile_url.nil? %>
+			<li><a href="<%=member.profile_url%>" style="color: rgb(0, 51, 204); text-decoration: underline;"><%=member.full_name%></a>, <%=member.institution%>, <%=member.country%></li>
+		<% else %>
+			<li><%=member.full_name%>, <%=member.institution%>, <%=member.country%></li>
+		<% end %>
+	<% end %>
+	</ul>
+	</div>
+	<h2>Governing Body</h2>
+	<div>
+	<ul>
+		<% for governor in Governor.all %>
+			<% unless governor.member.nil? %>
+				<% unless governor.member.profile_url.nil? %>
+					<li><a href="<%=governor.member.profile_url%>"><%= governor.member.full_name%></a>, <%= governor.designation %></li>
+				<% else %>
+					<li><%= governor.member.full_name%>, <%= governor.designation %></li>
+				<% end %>
+			<% else %>
+				ERROR retrieving member info.
+			<% end %>
+		<% end %>
+	</ul>
+	</div>
+	<h2>Regular Members</h2>
+	<div>
+	<ul>
+		<% for member in MembershipRequest.regular_members %>
+			<% unless member.profile_url.nil? %>
+				<li><a href="<%=member.profile_url%>"><%= member.full_name %></a></li>
+			<% else %>
+				<li><%= member.full_name %></li>
+			<% end %>
+		<% end %>
+	</ul>
+	</div>
+	<h2>Associate Members</h2>
+	<div>
+	<ul>
+		<% for member in MembershipRequest.associates %>
+			<% unless member.profile_url.nil? %>
+				<li><a href="<%=member.profile_url%>"><%= member.full_name %></a></li>
+			<% else %>
+				<li><%= member.full_name %></li>
+			<% end %>
+		<% end %>
+	</ul>
+	</div>
+	<h2></h2>
+
+	<div>1. Types of Members:</div>
+	<div>&nbsp;&nbsp; &nbsp;The eligibility and procedure of admission for various categories of&nbsp;membership shall be as follows:</div>
+	<div><br>
+	</div>
+	<div>&nbsp;&nbsp; &nbsp;I. &nbsp;Regular members: Any person, of any caste, creed or sex who is capable of preparing an acceptable paper in some subject of Information retrieval or related branch shall be eligible for a regular membership of the Society. Two Regular members must support an application for a Regular membership. A Regular member shall have the right to attend meetings of the General Body and to vote and shall be eligible to hold an elective office. Only a Regular member of the Society may be admitted by the Council as a Life member on payment of specified amount as may be determined by the Council.</div>
+	<div><br>
+	</div>
+	<div>&nbsp;&nbsp; II. &nbsp;Associate members: Any person, of any caste, creed or sex interested in Information retrieval who is not eligible to become a Regular member may be admitted as an Associate member provided his/her application for membership is supported by two Regular members. An Associate member may attend the meetings of the General Body, but shall have no right to vote or hold an elective office.</div>
+	<div><br>
+	</div>
+	<div>&nbsp;&nbsp; III. &nbsp;Student members: Any person, of any caste, creed or sex studying Information Retrieval or a related branch may be admitted as a Student member for such period until he/she becomes eligible for a regular membership or his/her age exceeds 35 years, whichever is earlier. Two regular members should support an application for a Student membership. A Student member shall have no right to attend the business meetings of the General body or to vote or to hold an elective office.</div>
+	<div><br>
+	</div>
+	<div>&nbsp;&nbsp; IV. &nbsp;Advisory member: Upon nomination by not less than five Regular members, the Council may elect distinguished scientist as Honorary fellows who shall have all the privileges of regular membership without payment of any dues.</div>
+	<div><br>
+	</div>
+	<div>&nbsp;&nbsp;&nbsp;</div>
+	<div>2. &nbsp;Cessation of Membership:</div>
+	<div>&nbsp;&nbsp; &nbsp; Any member shall cease to be a member .  (a) on the acceptance of his resignation from membership, (b) on his becoming insane or insolvent, (c) on his conviction of any offence in connection with the formation promotion, management or conduct of affairs of society or a body corporate or of any offence involving moral turpitude.&nbsp;</div>
+	<div><br>
+	</div>
+	<div><br>
+	</div>
+	<div>3. &nbsp; Register of Members:</div>
+	<div>&nbsp;&nbsp; &nbsp; The societies shall maintain a Register of members containing the names, address and their occupation, the date of admission and of cessation of membership. The Register will be kept open for inspection of the members of society on requisition. All entries required to be made therein shall be entered within a period of 15 days.</div>
+	<div><br>
+	</div>
+	<div><br>
+	</div>
+	<div>4. &nbsp;Right and obligations of members:</div>
+	<div>&nbsp;&nbsp; &nbsp; Any ordinary members of the society has the right (a) to elect and to be elected in any election of the society; (b) to submit suggestion for discussion to the Governing body and sub-committee on any matter relating to society; (c) to inspect the accounts and the proceedings of the meeting of the society on appointment with the secretary; (d) to pay his subscription within the prescribed time. Defaulting members shall not be allowed to take part or vote in the meeting. Members shall have one vote each.</div>
+	<div><br>
+	</div>
+	<div><br>
+	</div>
+	<div>5. &nbsp;Expulsion &amp; Removal:</div>
+	<div>&nbsp;&nbsp; &nbsp;Frequent actions of any member, if found by the Governing Body is detrimental to the interest and is in violation of the rules and regulations of the Society, he may be after a due enquiry, censured, suspended or expelled from the membership by the Governing Body. In that case the Governing Body shall first serve the member concerned with a show cause showing therein the charges framed and ask him to submit his statement of defense within a month. On receipt of the explanation the Governing Body shall have the power to take a suitable action against the delinquent member after allowing him to defend the case. If no reply to the show cause notice is received within a month, the Governing Body may take an ex-parte decision. For any act of expulsion or termination no such member shall be entitled to prefer any claim for compensation or damage even if proved on subsequent date that such of expulsion or termination was wrongful and/or unlawful.</div>
+	<div><br>
+	</div>
 
 </div>
-
 
 
 <!-- FOOT PARTIAL STARTS -->

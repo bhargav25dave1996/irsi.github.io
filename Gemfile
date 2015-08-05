@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'bundler'
+gem 'spreadsheet', '0.9.0'
 
 group :development, :test do
   gem 'rspec-rails'
