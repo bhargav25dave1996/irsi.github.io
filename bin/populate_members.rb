@@ -3,7 +3,7 @@ require 'spreadsheet'
 
 Spreadsheet.client_encoding = 'UTF-8'
 
-book = Spreadsheet.open '/home/shubham/irsi_members.xls'
+book = Spreadsheet.open "#{Rails.root}/irsi_members.xls"
 sheet = book.worksheet 1
 
 sheet.each_with_index do |row, i|
