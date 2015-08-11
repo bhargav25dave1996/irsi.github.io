@@ -12,6 +12,7 @@ ActiveAdmin.register MembershipRequest do
     column :last_name
     column :institution
     column :created_at
+    column :approved
     actions
   end
 
